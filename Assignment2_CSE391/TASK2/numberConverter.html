@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title> Series Order</title>
+  </head>
+  <body>
+
+    <table>
+      <tr>
+        <td width="13%">Input series of number:</td>
+        <td width="50%">
+          <input name="myinput" type="text" id="myinput" value="" />
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Max :</td>
+        <td>
+          <div id="max"> </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Min :</td>
+        <td>
+          <div id="min"> </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Sum  :</td>
+        <td>
+          <div id="sum"> </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Average :</td>
+        <td>
+          <div id="avg"> </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Reverse Order :</td>
+        <td>
+          <div id="reverse"> </div>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td></td>
+      </tr>
+    </table>
+<button onclick="cal()">Calculate</button>
+<script>
+  function cal() {
+  var values = document.getElementById('myinput').value.split(/,/g);
+  var sum = values.reduce(function(a, b) { return parseInt(a) + parseInt(b); });
+  document.querySelector('#max').innerHTML = values.max();
+  document.querySelector('#min').innerHTML = values.min();
+  document.querySelector('#sum').innerHTML = sum;
+  document.querySelector('#avg').innerHTML = sum / values.length;
+  document.querySelector('#reverse').innerHTML = values.reverse().join(',');
+}
+
+Array.prototype.max = function() {
+  return Math.max.apply(null, this);
+};
+
+Array.prototype.min = function() {
+  return Math.min.apply(null, this);
+};
+ 
+</script>
+  </body>
+</html>
